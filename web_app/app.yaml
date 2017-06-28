@@ -1,0 +1,19 @@
+application: captain-scarlet
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+
+# Temporary for testing
+- url: /index.html
+  static_files: index.html
+  upload: index.html
+
+- url: /robots.txt
+  static_files: static/robots.txt
+  upload: static/robots.txt 
+  
+- url: .*
+  script: main.wsgi_app
+  
