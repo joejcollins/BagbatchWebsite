@@ -1,7 +1,11 @@
-{% extends "text_and_image.html" %}
-{% block image %}farm_gate.jpg{% endblock %}
-{% block caption %}Womerton Farm Gate{% endblock %}
-{% block text %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Bagbatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+    <body>
 <h1>Send a Message</h1>
 <form id="Contact_Form" name="Contact_Form" onsubmit="JavaScript:return validateForm(this);"
 action="/send" method="post">
@@ -30,6 +34,6 @@ action="/send" method="post">
     </tbody>
 </table>
 </form>
-<p>Womerton Farm, All Stretton, Church Stretton, Shropshire, SY6&nbsp;6LJ</p>
-<script type="text/javascript" src="/js/email.js"></script>
- {% endblock %}
+
+    </body>
+</html>

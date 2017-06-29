@@ -1,0 +1,3 @@
+# Requirements, to install run...
+#     pip install -r requirements.txt
+Flask==0.12

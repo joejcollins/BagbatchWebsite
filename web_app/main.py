@@ -1,31 +1,46 @@
-import webapp2
-import routes
-import config
+''' Application Content '''
+# [START app]
 import logging
 
-'''
-Handlers to deal with the 404 and 500 exceptions should they occur
-'''
-def handle_404(request, response, exception):
-    logging.exception(exception)
-    template_values = {'title': 'Page Not Found!',
-                       'header': 'Page Not Found!',}
-    template = config.jinja_environment.get_template('errors/404.html')
-    response.out.write(template.render(template_values))
-    response.set_status(404)
+# [START imports]
+from flask import Flask, render_template, request
+# [END imports]
 
-def handle_500(request, response, exception):
-    logging.exception(exception)
-    template_values = {'title': 'Server Error!',
-                       'header': 'Server Error!',}
-    template = config.jinja_environment.get_template('errors/500.html')
-    response.out.write(template.render(template_values))
-    response.set_status(500)
+# [START create_app]
+APP = Flask(__name__)
+# [END create_app]
 
-'''
-Entrance to the application which sets up the routes and configuration
-'''
-wsgi_app = webapp2.WSGIApplication(routes=routes.wsgi_routes, debug=True, config=config.wsgi_config)
+# [START form]
+@APP.route('/contact')
+def form():
+    ''' Render the form '''
+    return render_template('contact.html')
+# [END form]
 
-wsgi_app.error_handlers[404] = handle_404
-wsgi_app.error_handlers[500] = handle_500
+
+# [START submitted]
+@APP.route('/submitted', methods=['POST'])
+def submitted_form():
+    ''' Handle the posted form '''
+    name = request.form['name']
+    email = request.form['email']
+    site = request.form['site_url']
+    comments = request.form['comments']
+
+    # [END submitted]
+    # [START render_template]
+    return render_template(
+        'submitted_form.html',
+        name=name,
+        email=email,
+        site=site,
+        comments=comments)
+    # [END render_template]
+
+
+@APP.errorhandler(500)
+def server_error(e):
+    # Log the error and stacktrace.
+    logging.exception('An error occurred during a request.')
+    return 'An internal error occurred.', 500
+# [END app]
