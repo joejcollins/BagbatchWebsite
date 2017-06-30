@@ -9,8 +9,8 @@ set "timestamp=%HH%%Min%%Sec%"
 set "datestamp=%YYYY%-%MM%-%DD%"
 ::
 :: Then deploy
-c:\python27\python "C:\Program Files (x86)\Google\google_appengine\appcfg.py"^
+:: c:\python27\python "C:\Program Files (x86)\Google\google_appengine\appcfg.py"^
+::  update ./web_app -V %datestamp% 
+c:\python27\python "C:\Program Files\Google\Cloud SDK\google-cloud-sdk\platform\google_appengine\appcfg.py"^
  update ./web_app -V %datestamp% 
-:: C:\Python27\python "c:\Program Files\Google\google_appengine\appcfg.py"^
-:: update ./web_app -V %datestamp% 
 pause
