@@ -14,13 +14,12 @@
 
 import pytest
 
-
 @pytest.fixture
 def app():
+    ''' Run tests '''
     import main
     main.app.testing = True
     return main.app.test_client()
-
 
 def test_index(app):
     r = app.get('/')
