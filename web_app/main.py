@@ -3,6 +3,7 @@
 import json
 import logging
 from flask import Flask, render_template, request
+from google.appengine.api import app_identity
 from google.appengine.api import mail
 
 app = Flask(__name__) # pylint: disable=invalid-name
@@ -33,10 +34,10 @@ def send_mail():
     secrets_file = open('secrets.json', 'r')
     secrets = json.loads(secrets_file.read())
     secrets_file.close()
-    message = mail.EmailMessage(
-        sender="a@b.com",
-        subject="Your account has been approved")
-    message.to = secrets['email'],
+    message = mail.EmailMessage(sender=app_identity.get_application_id() +
+                                '@appspot.gserviceaccount.com>')
+    message.subject = 'Message from Bagbatch'
+    message.to = secrets['email']
     message.body = "Dear Albert"
     message.send()
 
