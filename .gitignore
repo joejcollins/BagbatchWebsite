@@ -1,4 +1,6 @@
 secrets.json
+dev_server.cmd
+.vscode/
 .settings/
 *.suo
 *.user

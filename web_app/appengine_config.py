@@ -15,9 +15,9 @@ import logging, os, sys
 from google.appengine.ext import vendor
 
 
-logging.info("sys platform: " + sys.platform)
+'''logging.info("sys platform: " + sys.platform)
 logging.info("os name: " + os.name)
-logging.info("server software: " + os.environ.get('SERVER_SOFTWARE',''))
+logging.info("server software: " + os.environ.get('SERVER_SOFTWARE',''))'''
 
 on_appengine = os.environ.get('SERVER_SOFTWARE','').startswith('Development')
 if on_appengine and os.name == 'nt':
