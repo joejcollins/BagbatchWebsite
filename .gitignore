@@ -1,5 +1,6 @@
 secrets.json
 dev_server.cmd
+DEPLOY.CMD
 .vscode/
 .settings/
 *.suo
