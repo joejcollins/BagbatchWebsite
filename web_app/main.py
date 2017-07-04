@@ -1,10 +1,9 @@
 ''' main application '''
-
 import json
 import logging
 from flask import Flask, render_template, request
-from google.appengine.api import app_identity
-from google.appengine.api import mail
+from google.appengine.api import app_identity # pylint: disable=E0401
+from google.appengine.api import mail # pylint: disable=E0401
 
 app = Flask(__name__) # pylint: disable=invalid-name
 
@@ -39,11 +38,12 @@ def send_mail():
     message.subject = 'Message from Bagbatch'
     message.to = secrets['email']
     message.body = "Dear Albert"
+    
     message.send()
 
-# @app.errorhandler(500)
-# def server_error(error):
-#     ''' Log any errors and send 500 '''
-#     # Log the error and stacktrace.
-#     logging.exception('An error occurred during a request. ' + error)
-#     return 'An internal error occurred.', 500
+@app.errorhandler(500)
+def server_error(error):
+    ''' Log any errors and send 500 '''
+    # Log the error and stacktrace.
+    logging.exception('An error occurred during a request. ' + error)
+    return 'An internal error occurred.', 500
