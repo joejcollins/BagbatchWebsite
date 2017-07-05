@@ -12,7 +12,7 @@
           {% endfor %}<br />
           <br />
           {{ form.message.label }}: {{ form.message(size=35) }}
-          {% for error in form.email.errors %}
+          {% for error in form.message.errors %}
             <span style="color: blue;">[{{ error }}]</span>
           {% endfor %}<br />
           <br />
