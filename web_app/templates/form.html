@@ -6,8 +6,16 @@
       <div id="main">
         <form action="/" method="POST" name="message">
           {{ form.hidden_tag() }}
-          {{ form.email.label }}: {{ form.email(size=35) }}<br />
-          {{ form.message.label }}: {{ form.message(size=35) }}<br />
+          {{ form.email.label }}: {{ form.email(size=35) }}
+          {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}<br />
+          <br />
+          {{ form.message.label }}: {{ form.message(size=35) }}
+          {% for error in form.email.errors %}
+            <span style="color: blue;">[{{ error }}]</span>
+          {% endfor %}<br />
+          <br />
           {{ form.recaptcha() }}<br />
           <input type="submit" value="Send">
         </form>
