@@ -1,22 +1,15 @@
-<html>
-  <head>
-    <title>Submit a form</title>
-   <link rel="stylesheet" type="text/css" href="/static/style.css">
-  </head>
-  <body>
-    <div id="container">
+{% extends "base.html" %}
+{% block content %}
       <div class="pagetitle">
         <h1>Send a Message</h1>
       </div>
       <div id="main">
-        <form method="post" action="{{ url_for('submitted_form') }}">
-          <label for="email">Email:</label>
-          <input type="email" name="email"><br />
-          <label for="message">Message:</label>
-          <textarea name="message" required></textarea><br />
-          <input type="submit">
+        <form action="/" method="POST" name="message">
+          {{ form.hidden_tag() }}
+          {{ form.email.label }}: {{ form.email(size=35) }}<br />
+          {{ form.message.label }}: {{ form.message(size=35) }}<br />
+          {{ form.recaptcha() }}<br />
+          <input type="submit" value="Send">
         </form>
       </div>
-    </div>
-  </body>
-</html>
+{% endblock %}

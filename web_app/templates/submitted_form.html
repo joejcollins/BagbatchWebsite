@@ -1,20 +1,14 @@
-<html>
- <head>
-   <title>Submitted form</title>
-   <link rel="stylesheet" type="text/css" href="/static/style.css">
- </head>
- <body>
-   <div id="container">
+{% extends "base.html" %}
+{% set title = "Thanks" %}
+{% block content %}
      <div class="pagetitle">
-       <h1>Form submitted</h1>
+       <h1>Thanks</h1>
      </div>
      <div id="main">
-       <p>Thanks, here's what you sent:</p>
+       <p>Here's what you sent:</p>
        <p>
-          <strong>Email</strong>: {{email}} <br>
-          <strong>Message</strong>: {{message}}
+          <strong>{{ form.email.label }}</strong>: {{form.email.data}} <br>
+          <strong>{{ form.message.label }}</strong>: {{form.message.data}}
        </p>
      </div>
-   </div>
- </body>
-</html>
+{% endblock %}
