@@ -30,7 +30,7 @@ def form():
     if message_form.validate_on_submit():
         send_mail(message_form.email.data, message_form.message.data)
         return render_template('submitted_form.html', title="Thanks", form=message_form)
-    return render_template('form2.html', title="Message", form=message_form)
+    return render_template('form.html', title="Message", form=message_form)
 
 def send_mail(their_email, their_message):
     ''' Send an email message '''
