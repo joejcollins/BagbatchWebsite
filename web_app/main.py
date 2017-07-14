@@ -30,7 +30,7 @@ def form():
     if message_form.validate_on_submit():
         send_mail(message_form.email.data, message_form.message.data)
         return render_template('submitted_form.html', title="Thanks", form=message_form)
-    return render_template('form.html', title="Message", form=message_form)
+    return render_template('form2.html', title="Message", form=message_form)
 
 def send_mail(their_email, their_message):
     ''' Send an email message '''
@@ -44,12 +44,9 @@ def send_mail(their_email, their_message):
 @app.errorhandler(500)
 def server_error(error):
     ''' Log any errors to the browser because you are too lazy to look at the console
-    
+
     The Flask DEBUG setting must the set to false for this to work '''
-    recent_exception = sys.exc_info()
-    exception_type = recent_exception[0]
-    exception_value = recent_exception[1]
-    trace_back = recent_exception[2]
+    exception_type, exception_value, trace_back = sys.exc_info()
     no_limit = None
     exception = ''.join(traceback.format_exception(exception_type, exception_value,
                                                    trace_back, no_limit))
