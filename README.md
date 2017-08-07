@@ -22,4 +22,11 @@ Before running or deploying this application, install the dependencies using
 
 For more information, see the [App Engine Standard README](../../README.md)
 
+## Install GAE on C9
+
+* Alt-T
+* cd ..
+* wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.57.zip
+* unzip google_appengine_1.9.57.zip
+* rm google_appengine_1.9.57.zip 
 
