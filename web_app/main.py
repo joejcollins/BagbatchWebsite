@@ -1,6 +1,6 @@
 ''' Controller for the application '''
 import logging
-import secrets
+import models
 import forms
 import sys, traceback, os
 from flask import Flask, render_template
