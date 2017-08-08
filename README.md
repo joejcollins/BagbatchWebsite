@@ -12,7 +12,9 @@ Bagbatch Website
 
 ## To run on Cloud9 (https://c9.io) use:
 
-    ```python ./google_appengine/dev_appserver.py ./workspace/web_app/ --host=0.0.0.0  ```
+```
+python ./google_appengine/dev_appserver.py ./workspace/web_app/ --host=0.0.0.0  
+```
     
 ## To run on Cloud9 with access to the admin interface use:
     
