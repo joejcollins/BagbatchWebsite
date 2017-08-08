@@ -18,7 +18,9 @@ python ./google_appengine/dev_appserver.py ./workspace/web_app/ --host=0.0.0.0
     
 ## To run on Cloud9 with access to the admin interface use:
     
-    ```python ../google_appengine/dev_appserver.py ../workspace/web_app/ --host=0.0.0.0 --port=8080 --admin_host=0.0.0.0 --admin_port=8081```
+```
+python ../google_appengine/dev_appserver.py ../workspace/web_app/ --host=0.0.0.0 --port=8080 --admin_host=0.0.0.0 --admin_port=8081
+```
 
 # App Engine Standard Flask Hello World
 
@@ -28,4 +30,6 @@ Engine Standard.
 Before running or deploying this application, install the dependencies using
 [pip](http://pip.readthedocs.io/en/stable/):
 
-    pip install -t lib -r requirements.txt
+```
+pip install -t lib -r requirements.txt
+```
