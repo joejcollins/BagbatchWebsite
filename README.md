@@ -1,14 +1,22 @@
 # CaptainScarlet
+
 Bagbatch Website
 
-run on Cloud9 with 
+## Install GAE on C9
 
-python ../google-cloud-sdk/platform/google_appengine/dev_appserver.py ./web_app/ --host=0.0.0.0  
+* Alt-T
+* cd ..
+* wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.57.zip
+* unzip google_appengine_1.9.57.zip
+* rm google_appengine_1.9.57.zip 
 
-To view visit
+## To run on Cloud9 (https://c9.io) use:
 
-http://captain-scarlet.joejcollins.c9.io/
-
+    ```python ./google_appengine/dev_appserver.py ./workspace/web_app/ --host=0.0.0.0  ```
+    
+## To run on Cloud9 with access to the admin interface use:
+    
+    ```python ../google_appengine/dev_appserver.py ../workspace/web_app/ --host=0.0.0.0 --port=8080 --admin_host=0.0.0.0 --admin_port=8081```
 
 # App Engine Standard Flask Hello World
 
@@ -21,12 +29,4 @@ Before running or deploying this application, install the dependencies using
     pip install -t lib -r requirements.txt
 
 For more information, see the [App Engine Standard README](../../README.md)
-
-## Install GAE on C9
-
-* Alt-T
-* cd ..
-* wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.57.zip
-* unzip google_appengine_1.9.57.zip
-* rm google_appengine_1.9.57.zip 
 
