@@ -1,7 +1,8 @@
 ''' Controller for the application '''
 import logging
+import sys
+import traceback
 import forms
-import sys, traceback, os
 from models import Settings
 from flask import Flask, render_template
 from google.appengine.api import app_identity # pylint: disable=E0401
@@ -10,7 +11,7 @@ from google.appengine.api import mail # pylint: disable=E0401
 # Initialize the application with CSRF
 app = Flask(__name__) # pylint: disable=invalid-name
 # Set the Flask debug to false so you can use GAE debug
-app.config.update(DEBUG = False)
+app.config.update(DEBUG=False)
 app.secret_key = Settings.get('SECRET_KEY')
 app.config['RECAPTCHA_USE_SSL'] = False
 app.config['RECAPTCHA_PUBLIC_KEY'] = Settings.get('RECAPTCHA_PUBLIC_KEY')
@@ -52,3 +53,16 @@ def server_error(error):
                                                    trace_back, no_limit))
     logging.exception('An error occurred during a request. ' + str(error))
     return render_template('500.html', title=error, exception=exception)
+
+@app.route('/admin', methods=['GET'])
+def admin_page():
+    ''' Authentication required page '''
+    user = users.get_current_user()
+    if user:
+        if user:
+            title = 'You are an administrator.'
+        else:
+            title = 'You are not an administrator.'
+    else:
+        title = 'You are not logged in.'
+    return render_template('admin.html', title=title)
