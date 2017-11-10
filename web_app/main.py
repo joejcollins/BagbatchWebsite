@@ -7,6 +7,8 @@ from models import Settings
 from flask import Flask, render_template
 from google.appengine.api import app_identity # pylint: disable=E0401
 from google.appengine.api import mail # pylint: disable=E0401
+from google.appengine.api import users
+import pdb
 
 # Initialize the application with CSRF
 app = Flask(__name__) # pylint: disable=invalid-name
@@ -57,6 +59,7 @@ def server_error(error):
 @app.route('/admin', methods=['GET'])
 def admin_page():
     ''' Authentication required page '''
+    pdb.set_trace();
     user = users.get_current_user()
     if user:
         if user:
