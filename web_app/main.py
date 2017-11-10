@@ -59,13 +59,5 @@ def server_error(error):
 @app.route('/admin', methods=['GET'])
 def admin_page():
     ''' Authentication required page '''
-    pdb.set_trace();
     user = users.get_current_user()
-    if user:
-        if user:
-            title = 'You are an administrator.'
-        else:
-            title = 'You are not an administrator.'
-    else:
-        title = 'You are not logged in.'
-    return render_template('admin.html', title=title)
+    return render_template('admin.html', email=user.email())
