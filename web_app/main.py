@@ -12,6 +12,20 @@ import pdb
 
 # Initialize the application with CSRF
 app = Flask(__name__) # pylint: disable=invalid-name
+
+####################
+#### blueprints ####
+####################
+ 
+from home.views import users_blueprint
+from admin.views import recipes_blueprint
+ 
+# register the blueprints
+app.register_blueprint(users_blueprint)
+app.register_blueprint(recipes_blueprint)
+
+
+
 # Set the Flask debug to false so you can use GAE debug
 app.config.update(DEBUG=False)
 app.secret_key = Settings.get('SECRET_KEY')
@@ -26,23 +40,7 @@ def enable_local_error_handling():
     app.logger.addHandler(logging.StreamHandler())
     app.logger.setLevel(logging.INFO)
 
-@app.route('/', methods=['GET', 'POST'])
-def form():
-    ''' Show the message form for the user to fill in '''
-    message_form = forms.MessageForm()
-    if message_form.validate_on_submit():
-        send_mail(message_form.email.data, message_form.message.data)
-        return render_template('submitted_form.html', title="Thanks", form=message_form)
-    return render_template('form.html', title="Message", form=message_form)
 
-def send_mail(their_email, their_message):
-    ''' Send an email message to me '''
-    message = mail.EmailMessage(sender=app_identity.get_application_id() +
-                                '@appspot.gserviceaccount.com>')
-    message.subject = 'Message from Bagbatch Website'
-    message.to = Settings.get('EMAIL')
-    message.body = """From: {}\n\n<<BEGINS>>\n\n{}\n\n<<ENDS>>""".format(their_email, their_message)
-    message.send()
 
 @app.errorhandler(500)
 def server_error(error):
